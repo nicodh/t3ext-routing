@@ -154,7 +154,7 @@ class RoutingController
         $httpMethod = $_SERVER['REQUEST_METHOD'];
 
 
-        if (( $httpMethod === 'PUT' || $httpMethod === 'POST') && empty($_POST)) {
+        if ( ($httpMethod === 'PUT'|| $httpMethod === 'POST') && empty($_POST)) {
             // access payload with stream wrapper
             try {
                 $parsedData = json_decode(file_get_contents('php://input'), true);
@@ -164,7 +164,6 @@ class RoutingController
             } catch(\Exception $e) {
                 GeneralUtility::devLog('Input could not be parsed:' . $e->getMessage(), 'prov', 3);
             }
-
         }
 
         foreach ($this->routes as $route) {
